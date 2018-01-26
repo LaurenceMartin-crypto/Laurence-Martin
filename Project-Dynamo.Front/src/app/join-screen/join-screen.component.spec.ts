@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoinComponent } from './join.component';
+import { JoinScreenComponent } from './join-screen.component';
 
-describe('JoinComponent', () => {
-  let component: JoinComponent;
-  let fixture: ComponentFixture<JoinComponent>;
+describe('JoinScreenComponent', () => {
+  let component: JoinScreenComponent;
+  let fixture: ComponentFixture<JoinScreenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoinComponent ]
+      declarations: [ JoinScreenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoinComponent);
+    fixture = TestBed.createComponent(JoinScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
