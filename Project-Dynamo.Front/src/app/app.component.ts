@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { JoinHostScreenComponent } from './join-host-screen/join-host-screen.component';
+
+
 
 @Component({
   selector: 'app-root',
@@ -8,3 +13,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 }
+
