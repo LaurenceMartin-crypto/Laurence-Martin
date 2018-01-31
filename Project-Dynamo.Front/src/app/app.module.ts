@@ -7,7 +7,7 @@ import { JoinHostScreenComponent } from './join-host-screen/join-host-screen.com
 import { JoinScreenComponent } from './join-screen/join-screen.component';
 
 const routes: Routes = [
-  { path: '', component: JoinHostScreenComponent }
+  { path: '', component: JoinHostScreenComponent },
   { path: 'JoinScreen', component: JoinScreenComponent }
 ];
 
