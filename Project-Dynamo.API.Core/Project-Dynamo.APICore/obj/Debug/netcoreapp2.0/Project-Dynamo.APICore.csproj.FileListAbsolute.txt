@@ -1,0 +1,11 @@
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\bin\Debug\netcoreapp2.0\Project-Dynamo.APICore.deps.json
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\bin\Debug\netcoreapp2.0\Project-Dynamo.APICore.runtimeconfig.json
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\bin\Debug\netcoreapp2.0\Project-Dynamo.APICore.runtimeconfig.dev.json
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\bin\Debug\netcoreapp2.0\Project-Dynamo.APICore.dll
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\bin\Debug\netcoreapp2.0\Project-Dynamo.APICore.pdb
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\obj\Debug\netcoreapp2.0\Project-Dynamo.APICore.csprojResolveAssemblyReference.cache
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\obj\Debug\netcoreapp2.0\Project-Dynamo.APICore.csproj.CoreCompileInputs.cache
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\obj\Debug\netcoreapp2.0\Project-Dynamo.APICore.AssemblyInfoInputs.cache
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\obj\Debug\netcoreapp2.0\Project-Dynamo.APICore.AssemblyInfo.cs
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\obj\Debug\netcoreapp2.0\Project-Dynamo.APICore.dll
+C:\Projects\Project-Dynamo\Project-Dynamo.API.Core\Project-Dynamo.APICore\obj\Debug\netcoreapp2.0\Project-Dynamo.APICore.pdb

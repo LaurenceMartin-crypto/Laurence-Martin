@@ -62,12 +62,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Project-Dynamo.API\Project-Dynamo.API.csproj">
-      <Project>{10E787EB-4820-407C-8AC3-ED8D8406B8FF}</Project>
-      <Name>Project-Dynamo.API</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
