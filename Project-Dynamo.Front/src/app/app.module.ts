@@ -8,7 +8,7 @@ import { JoinScreenComponent } from './join-screen/join-screen.component';
 
 const routes: Routes = [
   { path: '', component: JoinHostScreenComponent }
-  { path: '', component: JoinScreenComponent }
+  { path: 'JoinScreen', component: JoinScreenComponent }
 ];
 
 @NgModule({
