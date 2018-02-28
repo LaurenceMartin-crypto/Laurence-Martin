@@ -1,0 +1,11 @@
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/bin/Debug/netcoreapp2.0/ProjectDynamo.API.deps.json
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/bin/Debug/netcoreapp2.0/ProjectDynamo.API.runtimeconfig.json
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/bin/Debug/netcoreapp2.0/ProjectDynamo.API.runtimeconfig.dev.json
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/bin/Debug/netcoreapp2.0/ProjectDynamo.API.dll
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/bin/Debug/netcoreapp2.0/ProjectDynamo.API.pdb
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/obj/Debug/netcoreapp2.0/ProjectDynamo.API.csprojResolveAssemblyReference.cache
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/obj/Debug/netcoreapp2.0/ProjectDynamo.API.csproj.CoreCompileInputs.cache
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/obj/Debug/netcoreapp2.0/ProjectDynamo.API.AssemblyInfoInputs.cache
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/obj/Debug/netcoreapp2.0/ProjectDynamo.API.AssemblyInfo.cs
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/obj/Debug/netcoreapp2.0/ProjectDynamo.API.dll
+/Users/ryanblum/Projects/ProjectDynamo.API/ProjectDynamo.API/obj/Debug/netcoreapp2.0/ProjectDynamo.API.pdb

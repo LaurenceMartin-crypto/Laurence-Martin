@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{B65BEAE4-B3A0-4391-BECA-30FB8597DEF2}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProjectDynamo.API/Hubs/CommsHub.cs">
+    <Files>
+      <File FileName="ProjectDynamo.API/Startup.cs" Line="44" Column="16" />
+      <File FileName="ProjectDynamo.API/Hubs/CommsHub.cs" Line="4" Column="33" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ProjectDynamo.API PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
