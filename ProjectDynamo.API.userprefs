@@ -1,8 +1,10 @@
 ﻿<Properties StartupConfiguration="{B65BEAE4-B3A0-4391-BECA-30FB8597DEF2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProjectDynamo.API/Hubs/CommsHub.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProjectDynamo.API/Models/PlayerModel.cs">
     <Files>
-      <File FileName="ProjectDynamo.API/Startup.cs" Line="44" Column="16" />
-      <File FileName="ProjectDynamo.API/Hubs/CommsHub.cs" Line="4" Column="33" />
+      <File FileName="ProjectDynamo.API/Hubs/GameHub.cs" Line="9" Column="25" />
+      <File FileName="ProjectDynamo.API/Startup.cs" Line="51" Column="14" />
+      <File FileName="ProjectDynamo.API/Models/GameModel.cs" Line="27" Column="15" />
+      <File FileName="ProjectDynamo.API/Models/PlayerModel.cs" Line="6" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

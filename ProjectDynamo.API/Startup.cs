@@ -49,7 +49,7 @@ namespace ProjectDynamo.API
 
             app.UseSignalR(routes =>
             {
-                routes.MapHub<CommsHub>("commCenter");
+                routes.MapHub<CommsHub>("GameHub");
             });
         }
     }
