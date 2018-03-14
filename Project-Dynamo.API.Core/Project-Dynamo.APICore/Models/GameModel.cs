@@ -3,6 +3,12 @@ using System.Collections.Generic;
 
 namespace ProjectDynamo.APICore.Models
 {
+
+    public class ChannelEvent
+    {
+        public dynamic Data { get; set; }
+        public string ChannelName { get; set; }
+    }
     public class GameModel
     {
         List<PlayerModel> _players;
