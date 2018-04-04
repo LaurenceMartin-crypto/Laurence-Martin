@@ -61,7 +61,7 @@ namespace Hubs.Gamehub
             await GameCache.AddAsync(model.gameId, model);
             //  Publish update to all connected clients in the Game model's group
             await Clients.Group(model.gameId).InvokeAsync(evnt.ChannelName);
-            // testing
+            
         }
 
         public void ListPlayers() {
