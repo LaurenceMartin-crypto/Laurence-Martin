@@ -55,13 +55,12 @@ namespace Hubs.Gamehub
         }
 
         public async Task UpdateGame(ChannelEvent evnt) {
-            GameModel model = GameCache.GetValue<GameModel>(evnt.Data.gameId);
+            GameModel model = GameCache.GetValue<GameModel>(evnt.Data);
             //  Persist current Game model to cache
             GameCache.Delete(model.gameId);
             await GameCache.AddAsync(model.gameId, model);
             //  Publish update to all connected clients in the Game model's group
-            await Clients.Group(model.gameId).InvokeAsync(evnt.ChannelName);
-            
+            await Clients.Group(model.gameId).InvokeAsync(evnt.ChannelName, model);
         }
 
         public void ListPlayers() {
