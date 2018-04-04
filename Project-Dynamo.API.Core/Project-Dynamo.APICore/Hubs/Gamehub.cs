@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
+using ProjectDynamo.APICore.Models;
+using ProjectDynamo.APICore.Hubs;
 using SimpleCache;
+using Newtonsoft.Json.Linq;
 
 namespace Hubs.Gamehub
 {
-    public class Gamehub : Hub
+    public class Gamehub : HubBase
     {
         CacheService GameCache;
         public Gamehub(CacheService cache)
@@ -28,19 +31,20 @@ namespace Hubs.Gamehub
             //  Publish to clients
         }
 
-        public void StartGame() {
+        public void StartGame(ChannelEvent evnt) {
             //  Create Game model instance
-
+            GameModel model = ((JObject)evnt.Data).ToObject<GameModel>();
             //  Set Game code on the created model's id
-
+            model.gameId = GetGameCode();
             //  Set host id on the model to calling user's id (user that presses the start button is host)
 
             //  Add Host to a group
             Groups.AddAsync(Context.ConnectionId, "host");
 
             //  Persist model to cache
-
+            GameCache.AddAsync(model.gameId, model);
             //  Publish to connected clients
+            Clients.Group(model.gameId).InvokeAsync("");
         }
 
         public void LeaveGame(string groupId) {
@@ -50,10 +54,13 @@ namespace Hubs.Gamehub
             //  Delete Game model from cache
         }
 
-        public void UpdateGame() {
+        public void UpdateGame(GameModel model) {
             //  Persist current Game model to cache
-
+            GameCache.Delete(model.gameId);
+            GameCache.AddAsync(model.gameId, model);
             //  Publish update to all connected clients in the Game model's group
+            Clients.Group(model.gameId).InvokeAsync();
+            
         }
 
         public void ListPlayers() {
