@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using SimpleCache;
 
-namespace Gamehub
+namespace Hubs.Gamehub
 {
     public class Gamehub : Hub
     {
@@ -24,7 +24,7 @@ namespace Gamehub
             //  Add Player model to Game model
 
             //  Persist to cache
-
+            
             //  Publish to clients
         }
 
