@@ -12,6 +12,7 @@ namespace ProjectDynamo.APICore.Models
     public class GameModel
     {
         List<PlayerModel> _players;
+        internal string id;
 
         public string gameId { get; set; }
         public int maxPlayers { get; set; }
@@ -27,6 +28,8 @@ namespace ProjectDynamo.APICore.Models
             }
             set { _players = value; }
         }
+
+        public string HostId { get; internal set; }
 
         public GameModel(String hostId, List<PlayerModel> playerList)
         {

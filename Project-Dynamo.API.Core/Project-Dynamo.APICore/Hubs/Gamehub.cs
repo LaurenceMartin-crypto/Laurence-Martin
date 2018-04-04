@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
+using ProjectDynamo.APICore.Hubs;
+using ProjectDynamo.APICore.Models;
 using SimpleCache;
 
 namespace Hubs.Gamehub
 {
-    public class Gamehub : Hub
+    public class Gamehub : HubBase
     {
         CacheService GameCache;
         public Gamehub(CacheService cache)
@@ -28,19 +31,22 @@ namespace Hubs.Gamehub
             //  Publish to clients
         }
 
-        public void StartGame() {
+        public async Task StartGame(ChannelEvent evnt) {
             //  Create Game model instance
-
+            GameModel model = ((JObject)evnt.Data).ToObject<GameModel>();
             //  Set Game code on the created model's id
-
+            model.id = GetGameCode();
             //  Set host id on the model to calling user's id (user that presses the start button is host)
+            model.HostId = Context.ConnectionId;
 
-            //  Add Host to a group
-            Groups.AddAsync(Context.ConnectionId, "host");
-
+            //  Add Host to this game group
+            await Groups.AddAsync(Context.ConnectionId, model.id);
+            
             //  Persist model to cache
+            await GameCache.AddAsync(model.id, model);
 
             //  Publish to connected clients
+            await Clients.Group(model.id).InvokeAsync(evnt.ChannelName, model);
         }
 
         public void LeaveGame(string groupId) {
