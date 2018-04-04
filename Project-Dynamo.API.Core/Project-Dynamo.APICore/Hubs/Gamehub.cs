@@ -47,9 +47,9 @@ namespace Hubs.Gamehub
             await Clients.Group(model.gameId).InvokeAsync(evnt.ChannelName, model);
         }
 
-        public void LeaveGame(string groupId) {
+        public async Task LeaveGame(string groupId) {
             //  Remove users from game group
-            Groups.RemoveAsync(Context.ConnectionId, groupId);
+            await Groups.RemoveAsync(Context.ConnectionId, groupId);
 
             //  Delete Game model from cache
             GameCache.Delete(groupId);
