@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
+using SimpleCache;
 
 namespace Gamehub
 {
     public class Gamehub : Hub
     {
+        CacheService GameCache;
+        public Gamehub(CacheService cache)
+        {
+            GameCache = cache;
+        }
+
         public void JoinGame(string groupId) {
             //  Add calling user to given group id
             Groups.AddAsync(Context.ConnectionId, groupId);

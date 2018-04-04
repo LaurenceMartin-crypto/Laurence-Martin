@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using SimpleCache;
 
 namespace Project_Dynamo.APICore.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        CacheService Cache;
+        public ValuesController(CacheService cache)
+        {
+            Cache = cache;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -18,15 +26,32 @@ namespace Project_Dynamo.APICore.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult Get(string id)
         {
-            return "value";
+            try
+            {
+                var value =Cache.GetValue<string>(id);
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public ActionResult Post([FromBody]JObject data)
         {
+            try
+            {
+                Cache.Add((String)data["id"], (string)data["value"]);
+                return Ok("Success");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/values/5
