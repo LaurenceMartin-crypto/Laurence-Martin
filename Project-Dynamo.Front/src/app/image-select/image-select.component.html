@@ -1,0 +1,44 @@
+<form>
+  <div class="form-group">
+    <label for="imgSelectUrl">Select an image from URL:</label>
+    <input type="url" name="imgSelectUrl" id="imgSelectUrl" [ngModelOptions]="{debounce: 200}" [(ngModel)]="imgUrl" class="form-control">
+    <br>
+    <button class="btn btn-info" (click)="lookupImage()">Looks Good Lets Go!</button>
+    <br>
+    <br>
+    <h3>Original Measurements</h3>
+    <input type="text" [(ngModel)]="sx" name="sx" id="sx" placeholder="sx">
+    <br>
+    <input type="text" [(ngModel)]="sy" name="sy" id="sy" placeholder="sy">
+    <br>
+    <input type="text" [(ngModel)]="sWidth" name="sWidth" id="sWidth" placeholder="sWidth">
+    <br>
+    <input type="text" [(ngModel)]="sHeight" name="sHeight" id="sHeight" placeholder="sHeight">
+    <br>
+
+    <br>
+    <br>
+    <h3>Translational Measurements</h3>
+    <input type="text" [(ngModel)]="dx" name="dx" id="dx" placeholder="dx">
+    <br>
+    <input type="text" [(ngModel)]="dy" name="dy" id="dy" placeholder="dy">
+    <br>
+    <input type="text" [(ngModel)]="dWidth" name="dWidth" id="dWidth" placeholder="dWidth">
+    <br>
+    <input type="text" [(ngModel)]="dHeight" name="dHeight" id="dHeight" placeholder="dHeight">
+    <br>
+  </div>
+
+</form>
+<p class="bg-danger" [hidden]="!imgError">{{errorMsg}}</p>
+
+
+<div class="crop">
+  <button class="btn btn-info" style="width: 30px; height: 30px" (click)="zoomImage('in')">+</button>
+  <button class="btn btn-success" style="width: 30px; height: 30px" (click)="zoomImage('out')">-</button>
+  <button class="btn btn-warning" style="width: 30px; height: 30px" (click)="zoomImage('recenter')">%</button>
+  <br />
+  <img [src]="imgUrl" alt="" id="image-of-interest" style="display:none;width:90%;height:90%">
+  <canvas id="image-holder" style="width:90%;height:90%;border: 1px solid white;"></canvas>
+  
+</div>

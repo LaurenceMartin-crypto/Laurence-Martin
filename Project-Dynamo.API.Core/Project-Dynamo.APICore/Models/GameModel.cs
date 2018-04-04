@@ -11,8 +11,9 @@ namespace ProjectDynamo.APICore.Models
     }
     public class GameModel
     {
+        public GameModel(){ }
+
         List<PlayerModel> _players;
-        internal string id;
 
         public string gameId { get; set; }
         public int maxPlayers { get; set; }
@@ -27,26 +28,6 @@ namespace ProjectDynamo.APICore.Models
                 return _players;
             }
             set { _players = value; }
-        }
-
-        public string HostId { get; internal set; }
-
-        public GameModel(String hostId, List<PlayerModel> playerList)
-        {
-            this.gameId = "TESTGAME";
-            this.maxPlayers = 5;
-            this.hostId = hostId;
-            this.imageUrl = "http://www.digitalstrips.com/wp-content/gone_in_60_secs_angelina_hair.jpg";
-            this.playerList = playerList;
-        }
-
-        public GameModel(string gameId, int maxPlayers, string hostId, string imageUrl, List<PlayerModel> playerList)
-        {
-            this.gameId = gameId;
-            this.maxPlayers = maxPlayers;
-            this.hostId = hostId;
-            this.imageUrl = imageUrl;
-            this.playerList = playerList;
         }
     }
 }

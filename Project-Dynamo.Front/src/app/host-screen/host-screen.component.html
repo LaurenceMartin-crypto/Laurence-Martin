@@ -1,0 +1,23 @@
+<div class="timer col-lg-8 col-lg-offset-2">
+  {{timerDisplay | number:'2.2-2'}}
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="image-select col-lg-8 col-lg-offset-2">
+  <img src="{{urlForCanvas}}" style="width: 100%; height: 100px;" >
+</div>
+<br>
+<br>
+<br>
+<br>
+<table class="responses-table col-lg-8 col-lg-offset-2">
+  <tbody>
+    <tr *ngFor="let response of responses">
+      <td>{{response.icon}}</td>
+      <td>{{response.guess}}</td>
+    </tr>
+  </tbody>
+</table>
+

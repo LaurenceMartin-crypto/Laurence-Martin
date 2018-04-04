@@ -18,58 +18,71 @@ namespace Hubs.Gamehub
             GameCache = cache;
         }
 
-        public void JoinGame(string groupId) {
-            //  Add calling user to given group id
-            Groups.AddAsync(Context.ConnectionId, groupId);
-            
-            //  Create a player model
-
-            //  Add Player model to Game model
-
-            //  Persist to cache
-            
-            //  Publish to clients
+        public void Join()
+        {
+            Clients.All.SendAsync("OnEvent", new ChannelEvent());
         }
 
-        public async Task StartGame(ChannelEvent evnt) {
-            //  Create Game model instance
+        public async Task JoinGame(ChannelEvent evnt)
+        {
+            string name = evnt.Data.name;
+            string groupId = evnt.Data.id;
+            await Groups.AddAsync(Context.ConnectionId, (string)evnt.Data.id);
+
+            var model = new PlayerModel()
+            {
+                ConnectionId = Context.ConnectionId,
+                GroupId = evnt.Data.id,
+                name = evnt.Data.name
+            };
+
+            evnt.Data = await GameCache.GetValueAsync<GameModel>(groupId);
+
+            ((GameModel)evnt.Data).playerList.Add(model);
+
+            await GameCache.AddAsync(model.GroupId, evnt.Data);
+            evnt.ChannelName = "UpdateGame";
+            await Clients.Group(groupId).SendAsync("OnEvent", evnt);
+        }
+
+        public async Task StartGame(ChannelEvent evnt)
+        {
+            try
+            {
+                // TODO: make sure that users cannot join/start multiple games.
+                // Generate a game code, add this user to it as the host and then return
+                GameModel model = ((JObject)evnt.Data).ToObject<GameModel>();
+                model.gameId = GetGameCode();
+                model.hostId = Context.ConnectionId;
+                await Groups.AddAsync(Context.ConnectionId, model.gameId);
+                await GameCache.AddAsync(model.gameId, model);
+                evnt.Data = model;
+            }
+            catch (Exception ex)
+            {
+                evnt.Data = ex.Message;
+            }
+            await Clients.Client(Context.ConnectionId).SendAsync("OnEvent", evnt);
+        }
+
+        public async Task LeaveGame(string gameId)
+        {
+            await Groups.RemoveAsync(Context.ConnectionId, gameId);
+        }
+
+        public async Task UpdateGame(ChannelEvent evnt)
+        {
             GameModel model = ((JObject)evnt.Data).ToObject<GameModel>();
-            //  Set Game code on the created model's id
-            model.id = GetGameCode();
-            //  Set host id on the model to calling user's id (user that presses the start button is host)
-            model.HostId = Context.ConnectionId;
 
-            //  Add Host to this game group
-            await Groups.AddAsync(Context.ConnectionId, model.id);
-            
-            //  Persist model to cache
-            await GameCache.AddAsync(model.id, model);
 
-            //  Publish to connected clients
-            await Clients.Group(model.id).InvokeAsync(evnt.ChannelName, model);
+            await GameCache.AddAsync(model.gameId, evnt.Data);
+            evnt.ChannelName = "UpdateGame";
+            await Clients.Group(model.gameId).SendAsync("OnEvent", evnt);
         }
-
-        public void LeaveGame(string groupId) {
-            //  Remove users from game group
-            Groups.RemoveAsync(Context.ConnectionId, groupId);
-
-            //  Delete Game model from cache
-        }
-
-        public void UpdateGame() {
-            //  Persist current Game model to cache
-
-            //  Publish update to all connected clients in the Game model's group
-        }
-
-        public void ListPlayers() {
-            //  List all players in a given game (group)
-            
-            //  OPTIONS:
-            //  A) Invoke a call on the individual users to send names
-            //          - Means more calls than considered necessary
-            //  B) Retrieve names from all player models in given game model
-            //          - Means disconnected client names may still be printed
+        // TODO: move this to an aPI route that pulls from cache.
+        public async Task ListPlayers(string gameId)
+        {
+            // will need to pull this data from cache.
         }
     }
 }

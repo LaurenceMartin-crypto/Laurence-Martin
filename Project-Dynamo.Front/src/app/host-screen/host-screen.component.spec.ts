@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoinHostScreenComponent } from './join-host-screen.component';
+import { HostScreenComponent } from './host-screen.component';
 
-describe('JoinHostScreenComponent', () => {
-  let component: JoinHostScreenComponent;
-  let fixture: ComponentFixture<JoinHostScreenComponent>;
+describe('HostScreenComponent', () => {
+  let component: HostScreenComponent;
+  let fixture: ComponentFixture<HostScreenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoinHostScreenComponent ]
+      declarations: [ HostScreenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoinHostScreenComponent);
+    fixture = TestBed.createComponent(HostScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

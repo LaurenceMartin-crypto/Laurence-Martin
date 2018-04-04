@@ -1,0 +1,22 @@
+<style>
+  .badge {
+    width: 100%;
+    font-size: 30px;
+  }
+</style>
+<form>
+  <br>
+  <br>
+  <div class="form-group">
+    <label for="max_players">How many players?</label>
+    <input type="text" name="maxPlayers" id="max_players" class="form-control" [(ngModel)]="game.instance.maxPlayers">
+  </div>
+  <button class="btn btn-primary" (click)="joinGame()" [hidden]="hasCode">Get a code</button>
+  <br>
+  <br>
+  <div class="holder" [hidden]="!hasCode">
+    <h2>Game Code</h2>
+    <span class="badge">{{game.instance.gameId}}</span>
+    <button class="btn btn-success" routerLink="/wait">Continue </button>
+  </div>
+</form>

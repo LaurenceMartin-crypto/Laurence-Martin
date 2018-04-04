@@ -1,0 +1,19 @@
+<br>
+<br>
+<h2>Waiting for Players : {{game.instance.maxPlayers}}</h2>
+<h2>Are you the host? --> {{game._isHost}}</h2>
+
+<ul>
+    <span>Players: </span>
+    <li *ngFor="let item of items">
+     <h2> {{ item.name }} : has joined the game</h2>
+    </li>
+</ul>
+
+<button class="btn btn-danger" (click)="fuckItLetsGo()" *ngIf="game._isHost" >Tired of Waiting? Start Game With the players in current queue.</button>
+
+<style>
+  input {
+    color: black;
+  }
+</style>
