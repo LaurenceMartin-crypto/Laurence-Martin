@@ -1,7 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
-import { HubConnection } from "@aspnet/signalr";
+import { HubConnectionBuilder, HubConnection } from "@aspnet/signalr";
 
 /**
  * When SignalR runs it will add functions to the global $ variable 
@@ -77,7 +77,7 @@ export class ChannelService {
 
     // These are used to track the internal SignalR state 
     //
-    private hubConnection: any;
+    private hubConnection: HubConnection;
 
     // An internal array to track what channel subscriptions exist 
     //
@@ -91,7 +91,10 @@ export class ChannelService {
         this.error$ = this.errorSubject.asObservable();
         this.starting$ = this.startingSubject.asObservable();
 
-        this.hubConnection = new HubConnection("http://localhost:49369/game");
+        this.hubConnection  = new HubConnectionBuilder()
+        .withUrl("http://localhost:49369/game")
+        .build();
+        //this.hubConnection = new HubConnection("http://localhost:49369/game");
 
         // Define handlers for the connection state events
         //
@@ -154,6 +157,9 @@ export class ChannelService {
         //  again since it's a cold observable.
         //
         this.hubConnection.start()
+            .catch(function (err) {
+                return console.error(err.toString());
+            })
             .then(() => {
                 this.startingSubject.next(console.log('connected to signalr server successful.'));
             });

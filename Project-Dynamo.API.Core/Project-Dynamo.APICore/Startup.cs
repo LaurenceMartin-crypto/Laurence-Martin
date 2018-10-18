@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SimpleCache;
+using Project_Dynamo.APICore.Models;
 
 namespace Project_Dynamo.APICore
 {
@@ -25,7 +25,7 @@ namespace Project_Dynamo.APICore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            //services.AddCors();
             services.AddSignalR();
             services.AddMvc();
             services.AddScoped<CacheService>();
@@ -34,15 +34,14 @@ namespace Project_Dynamo.APICore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors(config =>
+               config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseCors(builder =>
-                builder.AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin());
 
             app.UseSignalR(routes =>
             {

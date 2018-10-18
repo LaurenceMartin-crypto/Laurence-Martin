@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json.Linq;
+using Project_Dynamo.APICore.Models;
 using ProjectDynamo.APICore.Hubs;
 using ProjectDynamo.APICore.Models;
-using SimpleCache;
 
 namespace Hubs.Gamehub
 {
@@ -27,7 +25,7 @@ namespace Hubs.Gamehub
         {
             string name = evnt.Data.name;
             string groupId = evnt.Data.id;
-            await Groups.AddAsync(Context.ConnectionId, (string)evnt.Data.id);
+            await Groups.AddToGroupAsync(Context.ConnectionId, (string)evnt.Data.id);
 
             var model = new PlayerModel()
             {
@@ -54,7 +52,7 @@ namespace Hubs.Gamehub
                 GameModel model = ((JObject)evnt.Data).ToObject<GameModel>();
                 model.gameId = GetGameCode();
                 model.hostId = Context.ConnectionId;
-                await Groups.AddAsync(Context.ConnectionId, model.gameId);
+                await Groups.AddToGroupAsync(Context.ConnectionId, model.gameId);
                 await GameCache.AddAsync(model.gameId, model);
                 evnt.Data = model;
             }
@@ -67,7 +65,7 @@ namespace Hubs.Gamehub
 
         public async Task LeaveGame(string gameId)
         {
-            await Groups.RemoveAsync(Context.ConnectionId, gameId);
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, gameId);
         }
 
         public async Task UpdateGame(ChannelEvent evnt)
